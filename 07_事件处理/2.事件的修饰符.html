@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-07-25 21:21:47
  * @LastEditors: xuewei
- * @LastEditTime: 2021-07-25 21:56:54
+ * @LastEditTime: 2021-07-26 21:21:38
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +68,9 @@
 
         <!--stop: 阻止事件冒泡(常用)-->
         <div class="demo1" @click="showInfo">
-            <button @click.stop="showInfo">点我提示信息哦</button>
+            <!-- <button @click.stop="showInfo">点我提示信息哦</button> -->
+            <!--修饰符可以连续写-->
+            <a href="www.badiu.com" @click.prevent.stop="showInfo">点我提示信息哦</a>
         </div>
 
         <!--once: 事件只触发一次(常用)-->

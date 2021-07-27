@@ -1,0 +1,51 @@
+<!--
+ * @Descripttion: 
+ * @Author: xuewei
+ * @version: 
+ * @Date: 2021-07-27 19:33:59
+ * @LastEditors: xuewei
+ * @LastEditTime: 2021-07-27 21:33:19
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vueDemo</title>
+
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--准备好一个容器-->
+    <div id="root">
+        <h2>今天天气很{{info}}</h2>
+
+        <!--@xxx = "yyy"可以写一些简单的语句-->
+        <!-- <button @click="changeWeather">切换天气</button> -->
+        <button @click="isHot = !isHot">切换天气</button>
+    </div>
+
+
+    <script>
+        Vue.config.productionTip = false // 设置为 false 以阻止 vue 在启动时生成生产提示。
+
+        new Vue({
+            el:'#root',
+            data:{
+                isHot:true
+            },
+            computed:{
+                info(){
+                    return this.isHot?'炎热':'凉爽'
+                }
+            },
+            methods: {
+                changeWeather(){
+                    this.isHot = !this.isHot
+                }
+            },
+        })
+    </script>
+</body>
+</html>

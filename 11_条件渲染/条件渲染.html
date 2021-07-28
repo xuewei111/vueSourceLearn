@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-07-27 23:12:52
  * @LastEditors: xuewei
- * @LastEditTime: 2021-07-27 23:29:36
+ * @LastEditTime: 2021-07-27 23:39:47
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,15 @@
                     2.v-else-if="表达式"
                     3.v-esle="表达式"
                 适用于: 切换频率较低的场景
-                特点: 不展示的Dom
+                特点: 不展示的DOM元素之间被移除
+                注意: v-if可以和:v-else-if,v-else一起使用,但要求结构不能被'打断'
+
+            2.v-show 
+                写法: v-show="表达式"
+                适用于: 切换频率较高的场景
+                特点: 不展示的DOM元素未被移除,仅仅是使用样式隐藏掉了
+
+            3.备注:使用v-if的时,元素可能无法获取到,而使用v-show一定可以获取的到！
     -->
     <!--准备好一个容器-->
     <div id="root">

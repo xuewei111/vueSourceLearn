@@ -1,0 +1,72 @@
+<!--
+ * @Descripttion: 
+ * @Author: xuewei
+ * @version: 
+ * @Date: 2021-07-29 23:01:25
+ * @LastEditors: xuewei
+ * @LastEditTime: 2021-07-30 13:12:47
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vueDemo</title>
+
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--准备好一个容器-->
+    <div id="root">
+        <h2>学校名称:{{name}}</h2>
+        <h2>学校地址:{{address}}</h2>
+
+        <hr>
+        <button @click="addsex">添加一个性别</button>
+        <h2>学生姓名:{{student.name}}</h2>
+        <h2 v-if="student.sex">性别:{{student.sex}}</h2>
+        <h2>学生年龄:真实{{student.age.rAge}},虚假{{student.age.sAge}}</h2>
+
+        <h2>朋友们</h2>
+        <ul>
+            <li v-for="(item,index) in student.friends" :key="index">
+                {{item.name}}-{{item.age}}
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+        Vue.config.productionTip = false // 设置为 false 以阻止 vue 在启动时生成生产提示。
+
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                name:'薛巍',
+                address:'无锡',
+                student:{
+                    name:'tom',
+                    age:{
+                        rAge:33,
+                        sAge:29
+                    },
+                    friends:[
+                        {
+                            name:'jer',
+                            age:35
+                        }
+                    ]
+                }
+            },
+            methods: {
+                addsex(){
+                    this.$set(this.student,'sex','男')
+                }
+            },
+        })
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!--
+ * @Descripttion: 
+ * @Author: xuewei
+ * @version: 
+ * @Date: 2021-08-06 15:44:47
+ * @LastEditors: xuewei
+ * @LastEditTime: 2021-08-06 15:54:23
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .demo {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点我创建一个输入框</button>
+    <script type="text/javascript">
+        const btn = document.getElementById('btn')
+        btn.onclick = ()=>{
+            const input = document.createElement('input')
+
+            input.className = 'demo'
+
+            
+            document.body.appendChild(input)
+            
+            input.focus()
+            
+        }
+    </script>
+</body>
+</html>

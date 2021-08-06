@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-05 17:50:02
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-05 17:57:59
+ * @LastEditTime: 2021-08-06 14:28:19
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +17,11 @@
     <script src="../js/vue.js"></script>
 </head>
 <body>
+    <!--
+        v-once指令
+            1.v-once所在节点在初次动态渲染后,就视为静态内容了
+            2.以后数据的改变不会引起v-once所在结构的更新,可以用于优化性能
+    -->
     <!--准备好一个容器-->
     <div id="root">
         <h2 v-once>初始化的n值是:{{n}}</h2>

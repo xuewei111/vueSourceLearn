@@ -2,9 +2,9 @@
  * @Descripttion: 
  * @Author: xuewei
  * @version: 
- * @Date: 2021-08-05 12:59:01
+ * @Date: 2021-08-05 17:50:02
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-05 17:49:28
+ * @LastEditTime: 2021-08-05 17:57:59
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -13,25 +13,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vueDemo</title>
-    <style>
-        [v-cloak]{
-            display: none;
-        }
-    </style>
-    
-</head>
-<body>
-    <!--
-        v-cloak指令(没有值)
-            1.本质是一个特殊属性,Vue实例创建完毕并接管容器后,会删掉v-cloak属性
-            2.使用css配合v-cloak可以解决网速慢时页面展示出{{xxx}}的问题
-    -->
-    <!--准备好一个容器-->
-    <div id="root">
-        <h2 v-cloak>{{name}}</h2>
-    </div>
 
     <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--准备好一个容器-->
+    <div id="root">
+        <h2 v-once>初始化的n值是:{{n}}</h2>
+        <h2>当前的n值是:{{n}}</h2>
+
+        <button @click="n++">点我n+1</button>
+    </div>
 
 
     <script>
@@ -40,7 +32,7 @@
         new Vue({
             el:'#root',
             data:{
-                name:'xuewei'
+                n:0
             }
         })
     </script>

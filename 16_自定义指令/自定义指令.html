@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-06 14:40:22
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-06 15:44:19
+ * @LastEditTime: 2021-08-07 23:10:34
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -55,9 +55,17 @@
                     element.innerText = binding.value*10
                     // console.log(element,binding)
                 },
-                fbind(element,binding){
-                    element.value=binding.value
-                    element.focus()
+                // fbind(element,binding){
+                //     element.value=binding.value
+                //     element.focus()
+                // }
+                fbind:{
+                    bind(){
+
+                    },
+                    inserted(){
+                        
+                    }
                 }
             }
         })

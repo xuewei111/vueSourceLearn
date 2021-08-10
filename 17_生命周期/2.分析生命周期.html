@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-09 13:12:57
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-09 13:13:06
+ * @LastEditTime: 2021-08-10 12:59:19
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -19,14 +19,55 @@
 <body>
     <!--准备好一个容器-->
     <div id="root">
+        <!-- <h2>当前的n值是:{{n}}</h2>
 
+        <button @click="add">点击n++</button> -->
     </div>
 
 
     <script>
         Vue.config.productionTip = false // 设置为 false 以阻止 vue 在启动时生成生产提示。
 
-        
+        const vm = new Vue({
+            el:'#root',
+            template:`
+                <div>
+                    <h2>当前的n值是:{{n}}</h2>
+                    <button @click="add">点击n++</button>    
+                </div>
+            `,
+            data:{
+                n:1
+            },
+            methods:{
+                add(){
+                    this.n++
+                },
+            },
+            beforeCreate() {
+                console.log('beforeCreate')
+                // console.log(this)
+            },
+            created() {
+                console.log('created')
+            },
+            beforeMount() {
+                console.log('beforeMount')
+            },
+            mounted() {
+                console.log('mounted',this.$el instanceof HTMLElement)
+            },
+            beforeUpdate() {
+                console.log('beforeUpdate')
+                // console.log(this.n)
+            },
+            updated() {
+                console.log('updated')
+            },
+        })
+
+        // 后续在控制台输入的
+        // vm.$mount('#root')
     </script>
 </body>
 </html>

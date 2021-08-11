@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-09 13:12:57
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-10 12:59:19
+ * @LastEditTime: 2021-08-11 12:59:42
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +19,11 @@
 <body>
     <!--准备好一个容器-->
     <div id="root">
-        <!-- <h2>当前的n值是:{{n}}</h2>
+        <h2>当前的n值是:{{n}}</h2>
 
-        <button @click="add">点击n++</button> -->
+        <button @click="add">点击n++</button>
+
+        <button @click="bye">点我销毁vm</button>
     </div>
 
 
@@ -30,19 +32,24 @@
 
         const vm = new Vue({
             el:'#root',
-            template:`
-                <div>
-                    <h2>当前的n值是:{{n}}</h2>
-                    <button @click="add">点击n++</button>    
-                </div>
-            `,
+            // template:`
+            //     <div>
+            //         <h2>当前的n值是:{{n}}</h2>
+            //         <button @click="add">点击n++</button>    
+            //     </div>
+            // `,
             data:{
                 n:1
             },
             methods:{
                 add(){
+                    console.log('add')
                     this.n++
                 },
+                bye(){
+                    console.log('bye')
+                    this.$destroy()
+                }
             },
             beforeCreate() {
                 console.log('beforeCreate')
@@ -63,6 +70,12 @@
             },
             updated() {
                 console.log('updated')
+            },
+            beforeDestroy() {
+                console.log('beforeDestroy')
+            },
+            destroyed() {
+                console.log('destroyed')
             },
         })
 

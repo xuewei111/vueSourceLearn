@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-12 22:47:19
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-12 22:50:53
+ * @LastEditTime: 2021-08-13 13:05:08
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -19,29 +19,74 @@
 <body>
     <!--准备好一个容器-->
     <div id="root">
-        <h2>学习名称:{{schoolName}}</h2>
-        <h2>学校地址:{{address}}</h2>
-
+        <h2>{{mes}}</h2>
         <hr>
+        <!--
+            第三步:编写组件标签
+        -->
+        <school></school>
+        <hr>
+        <!--
+            第三步:编写组件标签
+        -->
+        <student></student>
 
-        <h2>学生姓名:{{studentName}}</h2>
-        <h2>学生年龄:{{age}}</h2>
     </div>
 
 
     <script>
         Vue.config.productionTip = false // 设置为 false 以阻止 vue 在启动时生成生产提示。
 
-        //
-        // new Vue({
-        //     el:'#root',
-        //     data:{
-        //         schoolName:'尚硅谷',
-        //         address:'无锡',
-        //         studentName:'xuewei',
-        //         age:18
-        //     }
-        // })
+        // 第一步:创建school组件
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <h2>学习名称:{{schoolName}}</h2>
+                    <h2>学校地址:{{address}}</h2>
+                    <button @click="showName">点我提示学校名</button>
+                </div>
+            `,
+            // el:'#root', // 组件定义时,一定不要写el配置项,因为最终所有的组件都要被一个vm管理,由vm决定服务于哪个容器
+            data(){
+                return {
+                    schoolName:'尚硅谷',
+                    address:'北京'
+                }
+            },
+            methods: {
+                showName(){
+                    alert(this.schoolName)
+                }
+            },
+        })
+
+        // 第一步:创建student组件
+        const student = Vue.extend({
+            template:`<div>
+                    <h2>学生姓名:{{studentName}}</h2>
+                    <h2>学生年龄:{{age}}</h2>
+                </div>`,
+            data(){
+                return {
+                    studentName:'xuewei',
+                    age:18
+                }
+            }
+        })
+
+
+        // 创建VM
+        new Vue({
+            el:'#root',
+            //第二步:注册组件(局部注册)
+            components:{
+                school,
+                student
+            },
+            data:{
+                mes:'你好'
+            }
+        })
     </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-12 22:47:19
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-14 22:43:52
+ * @LastEditTime: 2021-08-15 21:30:34
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +17,12 @@
     <script src="../js/vue.js"></script>
 </head>
 <body>
+
+    <!--
+        Vue中使用组件的三大步骤
+            1.定义组件(创建组件)
+            2.注册组件
+    -->
     <!--准备好一个容器-->
     <div id="root">
         <h2>{{mes}}</h2>
@@ -73,7 +79,8 @@
                 }
             }
         })
-
+        
+        // 第一步:创建hello组件
         const hello = Vue.extend({
             template:`<div>
                 <h2>你好啊 {{name}}</h2>
@@ -85,6 +92,8 @@
                 }
             }
         })
+        //第二步,全局注册组件
+        Vue.component('hello',hello)
 
 
         // 创建VM

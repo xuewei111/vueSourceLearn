@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-16 23:40:34
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-17 12:56:26
+ * @LastEditTime: 2021-08-18 12:49:17
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +17,13 @@
     <script src="../js/vue.js"></script>
 </head>
 <body>
+    <!--
+        1.一个重要的内置关系:VueComponent.prototype.__proto__ === Vue.prototype
+        2.为什么要有这个关系: 让组件实例对象(VC)可以访问到Vue原型上的属性和方法
+    -->
     <!--准备好一个容器-->
     <div id="root">
-
+        <school></school>
     </div>
 
 
@@ -27,13 +31,15 @@
         Vue.config.productionTip = false // 设置为 false 以阻止 vue 在启动时生成生产提示。
 
         
-
+        Vue.prototype.x = 99
         // 定义school组件
         const school = Vue.extend({
-            name:'school',
-            template:`<div>
+            // name:'school',
+            template:`
+            <div>
                 <h2>学校名称:{{name}}</h2>
                 <h2>学校地址:{{address}}</h2>
+                <button @click="showX">点击</button>
             </div>`,
             data(){
                 return {
@@ -41,13 +47,21 @@
                     address:'北京'
                 }
             },
+            methods: {
+                showX(){
+                    console.log(this.x)
+                }
+            },
         })
 
         // 创建一个vm
-        new Vue({
+        const vm = new Vue({
             el:'#root',
             data:{
                 msg:'你好'
+            },
+            components:{
+                school
             }
         })
 

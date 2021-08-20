@@ -1,28 +1,41 @@
+<!--
+ * @Descripttion: 
+ * @Author: xuewei
+ * @version: 
+ * @Date: 2021-08-20 23:23:34
+ * @LastEditors: xuewei
+ * @LastEditTime: 2021-08-20 23:28:29
+-->
+<!--  -->
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+      <h2>
+          学校名称:{{name}}
+      </h2>
+      <h2>
+          学校地址:{{address}}
+      </h2>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  data () {
+    return {
+        name:'xuewei',
+        address:'bilbil'
+    };
+  },
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  components: {},
+
+  computed: {},
+
+  mounted: {},
+
+  methods: {}
 }
+
+</script>
+<style lang='scss' scoped>
 </style>

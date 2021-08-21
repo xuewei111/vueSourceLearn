@@ -4,36 +4,21 @@
  * @version: 
  * @Date: 2021-08-20 23:23:34
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-20 23:28:29
+ * @LastEditTime: 2021-08-21 22:43:42
 -->
 <!--  -->
 <template>
   <div>
-      <h2>
-          学校名称:{{name}}
-      </h2>
-      <h2>
-          学校地址:{{address}}
-      </h2>
+    <school/>
   </div>
 </template>
 
 <script>
+// 引入School组件
+import School from './components/School.vue'
 export default {
-  data () {
-    return {
-        name:'xuewei',
-        address:'bilbil'
-    };
-  },
-
-  components: {},
-
-  computed: {},
-
-  mounted: {},
-
-  methods: {}
+  name:'App',
+  components:{School}
 }
 
 </script>

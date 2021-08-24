@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-18 18:09:47
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-24 20:51:31
+ * @LastEditTime: 2021-08-24 21:27:20
 -->
 #笔记
 
@@ -67,3 +67,7 @@
             // 2.添加全局指令
             Vue.directive(...)
         }
+
+## scoped样式
+    作用: 让样式在局部生效,防止冲突
+    写法: <style scoped>

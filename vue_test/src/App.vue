@@ -4,29 +4,30 @@
  * @version: 
  * @Date: 2021-08-20 23:23:34
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-24 21:18:54
+ * @LastEditTime: 2021-08-25 12:44:23
 -->
 <!--  -->
 <template>
   <div>
-    <h1 class="title">n1h1</h1>
-    <Student/>
-    <School/>
+
   </div>
 </template>
 
 <script>
 // 引入School组件
-import Student from './components/Student.vue'
-import School from './components/School.vue'
+import MyHeader from './components/MyHeader'
+import MyList from './components/MyList'
+import MyFooter from './components/MyFooter'
+
 export default {
   name:'App',
-  components:{Student,School}
+  components:{
+    MyHeader,
+    MyList,
+    MyFooter
+  }
 }
 
 </script>
 <style scoped>
-  .title {
-    color: red;
-  }
 </style>

@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-20 23:23:34
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-25 21:21:54
+ * @LastEditTime: 2021-08-27 23:14:58
 -->
 <!--  -->
 <template>
@@ -57,6 +57,7 @@ export default {
 
   .btn-danger {
     color: #fff;
+    
     background-color: #da4f49;
     border: 1px solid #bd352f
   }

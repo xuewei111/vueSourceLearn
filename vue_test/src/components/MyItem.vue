@@ -4,14 +4,14 @@
  * @version: 
  * @Date: 2021-08-25 12:37:58
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-25 21:16:18
+ * @LastEditTime: 2021-08-28 17:40:35
 -->
 <!--  -->
 <template>
   <li>
     <label>
-      <input type="checkbox">
-      <span>xxxxx</span>
+      <input type="checkbox" :checked="todo.done">
+      <span>{{todo.title}}</span>
     </label>
     <button class="btn btn-danger" style="display:none">删除</button>
   </li>
@@ -20,6 +20,12 @@
 <script>
 export default {
     name:'MyItem',
+    props:{
+      todo:Object
+    },
+    mounted() {
+      console.log(this.todo)
+    },
     data () {
         return {
 

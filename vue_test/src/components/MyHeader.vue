@@ -4,12 +4,12 @@
  * @version: 
  * @Date: 2021-08-25 12:37:58
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-25 21:12:13
+ * @LastEditTime: 2021-08-28 17:44:51
 -->
 <!--  -->
 <template>
   <div class="todo-header">
-    <input type="text" placeholder="请输入你的任务名称,按回车确认">
+    <input type="text" placeholder="请输入你的任务名称,按回车确认" @keyup.enter="add">
   </div>
 </template>
 
@@ -18,9 +18,12 @@ export default {
     name:'MyHeader',
     data () {
         return {
-
+          
         };
     },
+    methods:{
+
+    }
 
 }
 

@@ -4,14 +4,15 @@
  * @version: 
  * @Date: 2021-08-25 12:37:58
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-25 21:12:45
+ * @LastEditTime: 2021-08-28 17:35:10
 -->
 <!--  -->
 <template>
   <ul class="todo-main">
-    <MyItem/>
-    <MyItem/>
-    <MyItem/>
+    <MyItem v-for="todo in todos"
+    :key="todo.id"
+    :todo="todo"
+    />
   </ul>
 </template>
 
@@ -21,7 +22,11 @@ export default {
     name:'MyList',
     data () {
         return {
-
+          todos:[
+            {id:'001',title:'抽烟',done:true},
+            {id:'002',title:'喝酒',done:false},
+            {id:'003',title:'烫头',done:true}
+          ]
         };
     },
     components:{

@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-25 12:37:58
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-28 17:40:35
+ * @LastEditTime: 2021-08-30 09:03:45
 -->
 <!--  -->
 <template>
@@ -31,7 +31,6 @@ export default {
 
         };
     },
-
 }
 
 </script>

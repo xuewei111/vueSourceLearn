@@ -4,13 +4,13 @@
  * @version: 
  * @Date: 2021-08-25 12:37:58
  * @LastEditors: xuewei
- * @LastEditTime: 2021-09-01 06:39:18
+ * @LastEditTime: 2021-09-01 07:03:01
 -->
 <!--  -->
 <template>
   <li>
     <label>
-      <input type="checkbox" :checked="todo.done">
+      <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)">
       <span>{{todo.title}}</span>
     </label>
     <button class="btn btn-danger" style="display:none">删除</button>
@@ -21,10 +21,17 @@
 export default {
     name:'MyItem',
     props:{
-      todo:Object
+      todo:Object,
+      checkTodo:Function
     },
     mounted() {
       console.log(this.todo)
+    },
+    methods: {
+      handleCheck(id){
+        // 通知App组件将对应的todo对象的done值取反
+        this.checkTodo(id)
+      }
     },
 }
 

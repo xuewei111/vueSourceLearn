@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-20 23:23:34
  * @LastEditors: xuewei
- * @LastEditTime: 2021-09-01 06:39:06
+ * @LastEditTime: 2021-09-01 06:59:34
 -->
 <!--  -->
 <template>
@@ -12,7 +12,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader :addTodo = "addTodo"/>
-        <MyList :todos = "todos"/>
+        <MyList :todos = "todos" :checkTodo="checkTodo"/>
         <MyFooter/>
       </div>
     </div>
@@ -43,9 +43,19 @@ export default {
       };
   },
   methods: {
+    // 添加一个todo
     addTodo(x){
       console.log('我是App组件,我收到了数据:',x)
       this.todos.unshift(x)
+    },
+    // 勾选 or 取消勾选 一个todo
+    checkTodo(id){
+      // this.todos.filter(x=>x.id===id)[0].done = !
+      this.todos.forEach(x=>{
+        if(x.id===id){
+          x.done = !x.done
+        }
+      })
     }
   }
 }

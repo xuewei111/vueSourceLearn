@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-25 12:37:58
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-31 12:56:13
+ * @LastEditTime: 2021-09-01 07:02:56
 -->
 <!--  -->
 <template>
@@ -12,6 +12,7 @@
     <MyItem v-for="todo in todos"
     :key="todo.id"
     :todo="todo"
+    :checkTodo = "checkTodo"
     />
   </ul>
 </template>
@@ -24,7 +25,8 @@ export default {
       MyItem
     },
     props:{
-      todos:Array
+      todos:Array,
+      checkTodo:Function
     }
 
 }

@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-20 23:23:34
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-28 17:09:08
+ * @LastEditTime: 2021-08-31 12:58:12
 -->
 <!--  -->
 <template>
@@ -12,7 +12,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader/>
-        <MyList/>
+        <MyList :todos = "todos"/>
         <MyFooter/>
       </div>
     </div>
@@ -32,6 +32,20 @@ export default {
     MyHeader,
     MyList,
     MyFooter
+  },
+  data () {
+      return {
+        todos:[
+          {id:'001',title:'抽烟',done:true},
+          {id:'002',title:'喝酒',done:false},
+          {id:'003',title:'烫头',done:true}
+        ]
+      };
+  },
+  methods: {
+    receive(x){
+      console.log('我是App组件,我收到了数据:',x)
+    }
   }
 }
 

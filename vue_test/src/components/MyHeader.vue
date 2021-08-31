@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-25 12:37:58
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-30 12:46:20
+ * @LastEditTime: 2021-08-31 12:49:21
 -->
 <!--  -->
 <template>
@@ -14,17 +14,19 @@
 </template>
 
 <script>
+import {nanoid} from 'nanoid'
 export default {
     name:'MyHeader',
-    data () {
-        return {
-          
-        };
-    },
     methods:{
       add(e){
         // 将用户的输入包装成一个todo对象
-        console.log(e.target.value)
+        // console.log(e.target.value)
+        const todo = {
+          id:nanoid(),
+          title:e.target.value,
+          done:false
+        }
+        console.log(todo)
       }
 
     }

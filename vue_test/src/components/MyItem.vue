@@ -4,7 +4,7 @@
  * @version: 
  * @Date: 2021-08-25 12:37:58
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-30 09:03:45
+ * @LastEditTime: 2021-09-01 06:39:18
 -->
 <!--  -->
 <template>
@@ -25,11 +25,6 @@ export default {
     },
     mounted() {
       console.log(this.todo)
-    },
-    data () {
-        return {
-
-        };
     },
 }
 

@@ -4,14 +4,14 @@
  * @version: 
  * @Date: 2021-08-20 23:23:34
  * @LastEditors: xuewei
- * @LastEditTime: 2021-08-31 12:58:12
+ * @LastEditTime: 2021-09-01 06:39:06
 -->
 <!--  -->
 <template>
   <div id="root"> 
     <div class="todo-container">
       <div class="todo-wrap">
-        <MyHeader/>
+        <MyHeader :addTodo = "addTodo"/>
         <MyList :todos = "todos"/>
         <MyFooter/>
       </div>
@@ -43,8 +43,9 @@ export default {
       };
   },
   methods: {
-    receive(x){
+    addTodo(x){
       console.log('我是App组件,我收到了数据:',x)
+      this.todos.unshift(x)
     }
   }
 }

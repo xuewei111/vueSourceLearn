@@ -8,14 +8,15 @@
 -->
 <!--  -->
 <template>
-  <div class="todo-footer">
+  <div class="todo-footer" v-show="todal">
     <label>
-      <input type="checkbox">
+      <!-- <input type="checkbox" :checked="isAll" @change="checkAll"> -->
+      <input type="checkbox" v-model="isAll">
     </label>
     <span>
-      <span>已完成 {{doneTotal}}</span> /全部 {{todos.length}}
+      <span>已完成 {{doneTotal}}</span> /全部 {{todal}}
     </span>
-    <button class="btn btn-danger">清除已完成任务</button>
+    <button class="btn btn-danger" @click="clearAll">清除已完成任务</button>
   </div>
 </template>
 
@@ -23,11 +24,24 @@
 export default {
     name:'MyFooter',
     props:{
-      todos:Array
+      todos:Array,
+      checkAllTodo:Function,
+      clearAllTodo:Function
     },
     computed:{
+      todal(){
+        return this.todos.length
+      },
       doneTotal(){
         return this.todos.reduce((pre,todo)=> pre + (todo.done?1:0),0)
+      },
+      isAll:{
+        get(){
+          return this.doneTotal === this.todal && this.todal > 0
+        },
+        set(val){
+          this.checkAllTodo(val)
+        }
       }
     },
     data () {
@@ -35,6 +49,15 @@ export default {
 
         };
     },
+    methods: {
+      // checkAll(e){
+      //   console.log(e.target.checked)
+      //   this.checkAllTodo(e.target.checked)
+      // }
+      clearAll(){
+        this.clearAllTodo()
+      }
+    }
 
 }
 

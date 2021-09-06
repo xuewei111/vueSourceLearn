@@ -13,6 +13,7 @@
     :key="todo.id"
     :todo="todo"
     :checkTodo = "checkTodo"
+    :deleteTodo = "deleteTodo"
     />
   </ul>
 </template>
@@ -26,7 +27,8 @@ export default {
     },
     props:{
       todos:Array,
-      checkTodo:Function
+      checkTodo:Function,
+      deleteTodo:Function
     }
 
 }

@@ -12,6 +12,8 @@
       <h2>学校名字: {{name}}</h2>
       <h2>学校地址: {{address}}</h2>
 
+      <button @click="sendSchoolName">学校名称给App</button>
+
   </div>
 </template>
 
@@ -24,6 +26,15 @@ export default {
         address:'无锡'
     };
   },
+  props:{
+    getSchoolName:Function
+  },
+  methods: {
+    sendSchoolName(){
+      this.getSchoolName(this.name)
+    }
+  },
+  
 }
 
 </script>

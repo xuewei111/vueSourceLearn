@@ -37,7 +37,7 @@ export default {
     sendStudentName(){
       // 触发Student组件实例身上的atguigu事件
       this.$emit('atguigu',this.name)
-      this.$emit('demo')
+      // this.$emit('click')
     },
     unbind(){
       // this.$off('atguigu') //解绑一个自定义事件

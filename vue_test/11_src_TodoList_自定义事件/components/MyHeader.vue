@@ -17,7 +17,7 @@
 import {nanoid} from 'nanoid'
 export default {
     name:'MyHeader',
-    props:['addTodo'],
+    // props:['addTodo'],
     data(){
       return {
         title:''
@@ -35,7 +35,8 @@ export default {
         }
         // console.log(todo)
         // 通知App组件去添加一个todo对象
-        this.addTodo(todo)
+        this.$emit('addTodo',todo)
+        // this.addTodo(todo)
         // 清空输入
         this.title = ''
       }

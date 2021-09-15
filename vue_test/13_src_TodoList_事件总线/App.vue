@@ -22,9 +22,6 @@
 
 <script>
 // 引入School组件
-import pubsub from 'pubsub-js'
-
-
 import MyHeader from './components/MyHeader'
 import MyList from './components/MyList'
 import MyFooter from './components/MyFooter'
@@ -58,7 +55,7 @@ export default {
       })
     },
     // 删除一个todo
-    deleteTodo(_,id){
+    deleteTodo(id){
       this.todos = this.todos.filter(todo=> todo.id !== id)
     },
     //全选 or 取消全选
@@ -87,15 +84,11 @@ export default {
   },
   mounted(){
     this.$bus.$on('checkTodo',this.checkTodo)
-    // this.$bus.$on('deleteTodo',this.deleteTodo)
-
-    this.pubId = pubsub.subscribe('deleteTodo',this.deleteTodo)
+    this.$bus.$on('deleteTodo',this.deleteTodo)
   },
   beforeDestroy(){
     this.$bus.$off('checkTodo')
-    // this.$bus.$off('deleteTodo')
-
-    pubsub.unsubscribe(this.pubId)
+    this.$bus.$off('deleteTodo')
   }
 }
 

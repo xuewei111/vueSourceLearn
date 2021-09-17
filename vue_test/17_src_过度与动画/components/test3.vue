@@ -1,13 +1,17 @@
 <template>  
     <div>
         <button @click="isShow = !isShow">显示 / 隐藏</button>
-        <h1 v-show="isShow">你好啊！</h1>
+        <transition-group name="animate_animated animate_bounce" appear>
+                <h1 v-show="isShow" key="1">你好啊!</h1>
+                <h1 v-show="isShow" key="2">bilbil</h1>
+        </transition-group>
     </div>
 </template>
 
 <script>
+    import 'animate.css'
     export default {
-        name:'Test',
+        name:'Test2',
         data(){
             return {
                 isShow:true
@@ -19,5 +23,7 @@
 <style scoped>
     h1 {
         background-color: orange;
+        transition: 0.5s linear;
     }
+
 </style>

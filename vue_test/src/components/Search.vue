@@ -3,9 +3,9 @@
 </template>
 
 <script>
-export default {
-
-}
+    export default {
+        name:'Search'
+    }
 </script>
 
 <style>

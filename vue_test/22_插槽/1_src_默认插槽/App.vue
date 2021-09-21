@@ -10,33 +10,19 @@
 <template>
   <div class="container"> 
     <Category title="美食" :listData="foods">
-      <img src="https://img.zcool.cn/community/01e8095bc75de9a8012099c887714a.jpg@1280w_1l_2o_100sh.jpg" slot="center">
-      <a href="www.baidu.com" slot="footer">更多的美食</a>
+      <img src="https://img.zcool.cn/community/01e8095bc75de9a8012099c887714a.jpg@1280w_1l_2o_100sh.jpg">
     </Category>
     <Category title="游戏">
-      <ul slot="center">
+      <ul>
           <li 
           v-for="(g,index) in games" 
           :key="index">
             {{g}}
           </li>
       </ul>
-      <div slot="footer" class="foot">
-        <a href="www.baidu.com">单机游戏</a>
-        <a href="www.baidu.com">网络游戏</a>
-      </div>
     </Category>
     <Category title="电影">
-      <video src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" controls slot="center"></video>
-      <template v-slot:footer>
-        <div class="foot">
-          <a href="www.baidu.com">经典</a>
-          <a href="www.baidu.com">热门</a>
-          <a href="www.baidu.com">推荐</a>
-        </div>
-        <h4>欢迎前来观影</h4>
-      </template>
-      
+      <video src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" controls></video>
     </Category>
   </div>
 </template>
@@ -60,21 +46,16 @@ export default {
 </script>
 
 <style>
-  .container,.foot {
+  .container {
     display: flex;
     justify-content: space-around;
   }
 
   img {
         width: 100%;
-        height: 100%;
   }
 
   video {
     width: 100%;
-  }
-  
-  h4 {
-    text-align: center;
   }
 </style>

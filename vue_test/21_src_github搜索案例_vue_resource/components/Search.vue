@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    // import axios from 'axios'
     export default {
         name:'Search',
         data(){
@@ -26,7 +26,7 @@
                     errMsg:'',
                     users:[]
                 })
-                axios.get(`https://api.github.com/search/users?q=${this.keyWord}`).then(
+                this.$http.get(`https://api.github.com/search/users?q=${this.keyWord}`).then(
                     response => {
                         // console.log('请求成功了！',response.data.items)
                         // this.$bus.$emit('getUsers',response.data.items)

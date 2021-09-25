@@ -489,6 +489,15 @@
                 }
             })
 
+        3.开启命名空间后，组件中读取state数据:
+            //方式一:自己直接读取
+            this.$store.state.personAbout.list
+            //方式二:借助mapState读取
+            ...mapState('personAbout',['list'])
+
+        4.开启命名空间后,组件中读取getters数据
+            //方式一:
+
             
 
 

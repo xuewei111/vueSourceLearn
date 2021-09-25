@@ -459,5 +459,36 @@
 
     备注:mapActions与mapMutations使用时,若需要传递参数需要,在模板中绑定事件时传递好参数,否则参数是事件对象
 
+    7.模块化+命名空间
+        1.目的:让代码更好维护,让多种数据分类更加明确
+
+        2.修改store.js
+            const countAbout = {
+                namespaced:true, //开启命名空间
+                state:{x:1},
+                mutations:{...},
+                actions:{....},
+                getters:{
+                    bigSum(state){
+                        return state.sum * 10
+                    }
+                }
+            }
+
+            const personAbout = {
+                namespaced:true, //开启命名空间
+                state:{...},
+                mutations:{...},
+                actions:{...}
+            }
+
+            const store = new Vuex.Store({
+                modules:{
+                   countAbout, 
+                   personAbout
+                }
+            })
+
+            
 
 

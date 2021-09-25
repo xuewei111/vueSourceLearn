@@ -31,15 +31,14 @@ export default {
         // ...mapState({he:'sum',xuexiao:'school',xueke:'subject'}),
 
         // 借助mapState生成计算属性,从state中读取数据(数组写法)
-        ...mapState('countOptions',['sum','school','subject']),
-        ...mapState('personOptions',['PersonList']),
+        ...mapState(['sum','school','subject','PersonList']),
         
 
         /************ */
         // 借助mapGetters生成计算属性,从getters中读取数据.(对象写法)
         // ...mapGetters({bigSum:'bigSum'})
         // 借助mapGetters生成计算属性,从getters中读取数据(数组写法)
-        ...mapGetters('countOptions',['bigSum'])
+        ...mapGetters(['bigSum'])
     },
     methods:{
         // 程序员亲自写方法
@@ -51,7 +50,7 @@ export default {
         // },
 
         // 借助mapMutations生成对应的方法,方法中会调用commit去联系mutations(对象写法)
-        ...mapMutations('countOptions',{inCrement:'JIA',deCrement:'JIAN'}),
+        ...mapMutations({inCrement:'JIA',deCrement:'JIAN'}),
 
         // 借助mapMutations生成对应的方法,方法中会调用commit去联系mutations(数组写法)
         // ...mapMutations(['JIA','JIAN']),
@@ -69,7 +68,7 @@ export default {
         //     this.$store.dispatch('jiaWait',this.n)
         // },
         // 借助mapActions生成对应的方法,方法中会调用dispatch去联系dispatch(对象写法)
-        ...mapActions('countOptions',{inCrementOdd:'jiaOdd',inCrementWait:'jiaWait'}),
+        ...mapActions({inCrementOdd:'jiaOdd',inCrementWait:'jiaWait'}),
 
         // 借助mapActions生成对应的方法,方法中会调用dispatch去联系dispatch(数组写法)
         // ...mapActions(['jiaOdd','jiaWait']),

@@ -496,22 +496,7 @@
             ...mapState('personAbout',['list'])
 
         4.开启命名空间后,组件中读取getters数据
-            //方式一: 自己直接读取
-            this.$sotre.getters['personAbout/firstPersonName']
-            //方式二: 借助mapGetters读取
-            ...mapGetters('countAbout',['bigSum'])
-
-        5.开启命名空间后,组件中调用dispatch
-            //方式一:自己直接dispatch
-            this.#store.dispatch('personAbout/addPersonWang',person)
-            //方式二:借助mapActions
-            ...mapActions('countOptions',{inCrementOdd:'jiaOdd',inCrementWait:'jiaWait'})
-
-        6.开启命名空间后,组件中调用commit
-            //方式一:自己直接commit
-            this.$store.commit('personOptions/ADD_PERSON',personObj)
-            //方法二,借助mapMutations
-            ...mapMutations('countOptions',{inCrement:'JIA',deCrement:'JIAN'}),
+            //方式一:
 
             
 

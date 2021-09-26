@@ -11,7 +11,9 @@
   <div>
     <div class="row">
       <div>
-        <Banner/>
+        <div>
+          <h2>Vue Router Demo</h2>
+        </div>
       </div>
     </div>
 
@@ -32,7 +34,6 @@
         <div>
           <div>
             <!--指定组件的呈现位置-->
-            <!-- <h2>222</h2> -->
             <router-view></router-view>
           </div>
         </div>
@@ -42,10 +43,8 @@
 </template>
 
 <script>
-import Banner from './components/Banner.vue'
 export default {
   name:'App',
-  components:{Banner}
 }
 
 </script>

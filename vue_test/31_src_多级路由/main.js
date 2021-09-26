@@ -29,5 +29,3 @@ const vm = new Vue({
     router
 }).$mount("#app")
 
-console.log(vm)
-

@@ -498,6 +498,78 @@
         4.开启命名空间后,组件中读取getters数据
             //方式一:
 
+## 路由
+    1.理解:一个路由(router)就是一组映射关系(key-value),多个路由需要路由器(router)进行管理
+
+    2.前端路由:key是路径,value是组件
+
+        1.基本使用
+            1.安装vue-router,命令:npm i vue-router
+
+            2.应用插件:Vue.use(VueRouter)
+
+            3.编写router配置项
+                // 引入VueRouter
+                import VueRouter from 'vue-router'
+                // 引入Luyou组件
+                import About from '../components/About.vue'
+                import Home from '../components/Home.vue'
+
+
+                // 创建并暴露一个路由器
+                export default new VueRouter({
+                    routers:[
+                        {
+                            path:'/about',
+                            component:About
+                        },
+                        {
+                            path:'/home',
+                            component:Home
+                        }
+                    ]
+                })
+
+            4.实现切换(active-class可配置高亮样式)
+            <router-link active-class="active" to="/about">About</router-link>
+
+            5.指定展示位置
+            <router-view></router-view>
+
+        2.几个注意点
+            1.路由组件通常存放在pages文件夹,一般组件通常存放在components文件夹
+            2.通过切换,"隐藏"了的路由组件,默认是被销毁掉的,需要的时候再去挂载
+            3.每个组件都有自己的$route属性,里面存储着自己的路由信息
+            4.整个应用只有一个router,可以通过组件的$router属性获取到
+
+        3.多级路由(多级路由)
+            1.配置路由规则,使用children配置项
+                routers:[
+                    {
+                        path:'/about',
+                        component:About
+                    },
+                    {
+                        path:'/home',
+                        component:Home,
+                        children:[  // 通过children配置子级路由
+                            {
+                                path:'news',  // 此处一定不要写:/news
+                                component:News
+                            },
+                            {
+                                path:'message', // 此处一定不要写:/message
+                                component:Message
+                            }
+                        ]
+                    }
+                ]
+
+            2.跳转(要写完整路径)
+                <router-link to="/home/news">News</router-link>
+            
+
+
             
 
 

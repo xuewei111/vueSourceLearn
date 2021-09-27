@@ -2,13 +2,13 @@
     <div>
         <ul>
             <li>
-                news001 <input type="text">
+                news001
             </li>
             <li>
-                news002 <input type="text">
+                news002
             </li>
             <li>
-                news003 <input type="text">
+                news003
             </li>
         </ul>
     </div>

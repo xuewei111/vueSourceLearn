@@ -691,7 +691,35 @@
                     return {id,title}  
                 }
             }
-            
+
+        8.<router-link>的replace属性
+            1.作用:控制路由跳转时操作浏览器李四记录的模式
+            2.浏览器的历史记录有两种写入方式:分别为push和replace,push是追加历史记录,replace是替换当前记录,路由跳转时候默认为push
+            3.如何开启replace模式:<router-link replace to="/about">About</router-link>
+
+        9.编程式路由导航
+            1.作用:不借助<router-link>实现路由跳转,让路由跳转更加灵活
+
+            2.具体编码
+                $router的两个API
+                this.$router.push({
+                    name:'xiangqing',
+                    query:{
+                        id:xxx,
+                        titel:xxx
+                    }
+                })
+
+                this.$router.replace({
+                    name:'xiangqing',
+                    query:{
+                        id:xxx,
+                        titel:xxx
+                    }
+                })
+                this.$router.back()   // 前进   
+                this.$router.forward()  // 后退
+                this.$router.go(-2)     //可前进可后退
 
 
             

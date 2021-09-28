@@ -721,6 +721,71 @@
                 this.$router.forward()  // 后退
                 this.$router.go(-2)     //可前进可后退
 
+        10.缓存路由组件
+            1.作用:让不展示的路由组件保持挂载,不被销毁
+            2.具体编码
+                <keep-alive include="News">
+                    <router-view></router-view>
+                </keep-alive>
+
+        11.两个新的生命周期钩子
+            1.作用:路由组件所独有的两个钩子,用于捕获路由组件的激活状态
+            2.具体名字
+                1.activated路由组件被激活时触发
+                2.deactibated路由组件失活时触发
+
+        12.路由守卫
+            1.作用：对路由进行权限控制
+            2.分类:全局守卫,独享守卫,组件内守卫
+            3.全局守卫
+                // 全局前置守卫,初始化时执行,每次路由切换前执行
+                router.beforeEach((to,from,next)=>{
+                    console.log('beforeEach',to,from)
+                    if(to.meta.isAuth){ //判断当前路由是否需要进行权限控制
+                        if(localStorage.getItem('school') === 'atguigu'){ //权限控制的具体规则
+                            next()  // 放行
+                        } else {
+                            alert('暂无权限查看！')
+                        }
+                    } else {
+                        next()  // 放行
+                    }
+                })
+
+                //全局后置守卫,初始化时执行,每次路由切换后执行
+                router.alterEach((to,from)=>{
+                    console.log('afterEach',to,from)
+                    if(to.meta.title){
+                        document.title = to.meta.title //修改网页的title
+                    } else {
+                        document.title = 'vue_test'
+                    }
+                })
+
+            4.独享守卫
+                beforeEnter(to,from,next){
+                    console.log('beforeEnter',to,from)
+                    if(to.meta.isAuth){ //判断当前路由是否需要进行权限控制
+                        if(localStorage.getItem('school') === 'atguigu'){ //权限控制的具体规则
+                            next()  // 放行
+                        } else {
+                            alert('暂无权限查看！')
+                        }
+                    } else {
+                        next()  // 放行
+                    }
+                }
+
+            5.组件内守卫
+                // 进入守卫:通过路由规则,进入该组件时被调用
+                beforeRouteEnter(to,from,next){
+                }
+
+                // 离开守卫,通过路由规则,离开该组件时被调用
+                beforeRouteLeave(to,from,next){
+                }
+
+
 
             
 

@@ -8,16 +8,25 @@
  */
 // 引入vue
 import Vue from 'vue'
+// 完整引入
+// 引入ElementUI组件库
+import ElementUI from 'element-ui';
+// 引入ElementUI全部样式
+import 'element-ui/lib/theme-chalk/index.css';
+
+// 按需引入
+// import {Button,Row,DatePicker} from 'element-ui'
 //引入App
 import App from './App'
-// 引入VueRouter
-import VueRouter from 'vue-router'
-// 引入路由器
-import router from './router'
+
+// 应用ElementUI
+Vue.use(ElementUI);
 
 // 关闭Vue的生产提示
 Vue.config.productionTip = false
-Vue.use(VueRouter)
+// Vue.use(Button)
+// Vue.use(Row)
+// Vue.use(DatePicker)
 
 
 
@@ -26,7 +35,6 @@ Vue.use(VueRouter)
 // 创建Vue
 const vm = new Vue({
     render:h=>h(App),
-    router
 }).$mount("#app")
 
 console.log(vm)

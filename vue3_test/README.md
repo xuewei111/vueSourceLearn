@@ -65,10 +65,48 @@
         实现原理
             通过Proxy(代理):拦截对象中任意属性的变化,包括:属性值的读写,属性的添加,属性的删除等
 
-            通过Reflect(反射):对被代理对象的属性进行操作
+            通过Reflect(反射):对源对象的属性进行操作
 
             MDN文档中描述的Proxy与Reflect
 
                 Proxy:https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 
                 Reflect:https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect
+
+            new Proxy(data,{
+                //拦截读取属性值
+                get(target,prop){
+                    return Reflect.get(target,prop)
+                },
+                // 拦截设置属性值或添加新属性
+                set(target,prop,value){
+                    return Refelct.set(target,prop,value)
+                },
+                //拦截删除属性
+                deleteProperty(target,prop){
+                    return Reflect.deleteProperty(target,prop)
+                }
+            })
+
+            proxy.name = 'tom'
+
+5.reactive对比ref
+    从定义数据角度对比:
+        ref用来定义:基本类型数据
+
+        reactive用来定义:对象(或数组)类型数据
+
+        备注:ref也可以用来定义对象(或数组)类型数据,它内部会自动通过reactive转为代理对象
+
+    从原理角度对比
+        ref通过Object.defineProperty()的get与set来实现响应式(数据劫持)
+        
+        reactive通过使用Proxy来实现响应式(数据劫持),并通过Reflect操作源对象内部的数据
+
+    从使用角度对比:
+        ref定义的数据:操作数据需要.value 读取数据时模板中直接读取不需要.value
+
+        reactive定义的数据:操作数据与读取数据:均不需要.value
+
+6.setup的两个注意点
+    

@@ -1,69 +1,64 @@
 <template>
   <h1>我是App组件</h1>
 
-  <h2>姓名:{{name}}</h2>
-  <h2>年龄:{{age}}</h2>
-  <h2>性别:{{sex}}</h2>
-  <h2>a的值是{{a}}</h2>
+  <h2>姓名:{{person.name}}</h2>
+  <h2>年龄:{{person.age}}</h2>
 
-  <button @click="sayHello">说话vue3所配置的----sayHello)</button>
-  <br>
-  <button @click="sayWelcome">说话(vue2所配置的----sayWelcome)</button>
-  <hr>
-  <button @click="test1">测试一下在vue2的配置中去读取vue3中的配置</button>
-  <br>
-  <button @click="test2">测试一下在vue3的配置中去读取vue2中的配置</button>
+  <h3>工作种类:{{person.job.type}}</h3>
+  <h3>工作薪水:{{person.job.salary}}</h3>
+  <h3>测试的数据c{{person.job.a.b.c}}</h3>
+  <h3>爱好:{{person.hobby}}</h3>
+  <button @click="changeInfo">修改人的信息</button>
 </template>
 
 <script>
-import {h} from 'vue'
+import {ref,reactive} from 'vue'
 export default {
   name: 'App',
-  data(){
-    return {
-      sex:'男',
-      a:100
-    }
-  },
-  methods:{
-    sayWelcome(){
-      alert('学习！吃饭！')
-    },
-    test1(){
-      console.log(this.sex)
-      console.log(this.name)
-      console.log(this.age)
-      console.log(this.sayHello)
-      // this.sayHello()
-    }
-  },
-  // 此处只是测试一下setup，暂时不考虑响应式的问题
   setup(){
     // 数据
-    let name = '张三'
-    let age = 18
-    let a = 200
+
+    let person = reactive({
+      name:'张三',
+      age:18,
+      job:{
+        type:'前端',
+        salary:'30K',
+        a:{
+          b:{
+            c:666
+          }
+        }
+      },
+      hobby:['抽烟','喝酒','烫头']
+    })
+    // let num = reactive(666)
 
     // 方法
-    function sayHello(){
-      alert(`我叫${name},我${age}岁了,你好啊！`)
-    }
+    function changeInfo(){
+      // name.value = '李四',
+      // age.value = 40
+      // job.type = 'UI设计'
+      // job.salary = '60k'
 
-    function test2(){
-      console.log(this.sex)
-      console.log(name)
-      console.log(age)
+      // job.a.b.c = 999
 
-      this.sayWelcome()
+      // console.log(job)
+
+      // console.log(name,age)
+      // hobby[0] = '学习'
+      person.name = '李四'
+      person.age = 48
+      person.job.type = 'UI设计'
+      person.job.salary = '60k'
+      person.job.a.b.c = 999
+      person.hobby[0] = '学习'
     }
 
     // 返回一个对象(常用)
     return {
-      name,
-      age,
-      sayHello,
-      test2,
-      a
+      person,
+      changeInfo
     }
 
     // 返回一个函数(渲染函数)

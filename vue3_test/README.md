@@ -109,4 +109,38 @@
         reactive定义的数据:操作数据与读取数据:均不需要.value
 
 6.setup的两个注意点
-    
+    setup执行的时机
+        在beforeCreate之前执行一次,this是undefined
+
+    setup是参数
+        props:值为对象,包含:组件外部传递过来,但没有在props配置中声明的属性,相当于this.$attrs
+
+        slots:收到的插槽内容,相当于this.$slots
+
+        emit:分发自定义事件的函数,相当于this.$emit
+
+7.计算属性与监视
+    1.computed函数
+        与Vue2.x中的computed配置功能一致
+        写法
+            import {computed} from 'vue'
+
+            setup(){
+                ...
+                // 计算属性 ---- 简写
+                let fullName = computed(()=>{
+                    return person.firstName + '-' + person.lastName
+                })
+                //计算属性 ---- 完整
+                let fullName = computed({
+                    get(){
+                        return person.firstName + '-' + person.lastName
+                    },
+                    set(value){
+                        const nameArr = value.split('-')
+
+                        person.firstName = nameArr[0]
+                        person.lastName = nameArr[1]
+                    }
+                })
+            }

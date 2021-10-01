@@ -194,4 +194,36 @@
             但computed注重的计算出来的值(回调函数的返回值),所以必须要写返回值
 
             而watchEffect更注重的是过程(回调函数的函数体),所以不用写返回值
-            
+
+            //watchEffect所指定的回调中用到的数据只要发送变化,则直接重新执行回调
+            watchEffect(()=>{
+                const x1 = sum.value
+                const x2 = person.age
+                console.log('watchEffect所指定的回调执行了')
+            })
+
+8.生命周期
+
+    Vue3.0中可以继续使用Vue2.x中的生命周期钩子,但有两个被更名：
+        beforeDestroy改名为beforeUnmount
+
+        destroyed改名为unmounted
+
+    Vue3.0也提供了CompositionAPI形式的生命周期钩子,与Vue2.x中钩子对应关系如下
+        beforeCreate====>setup()
+
+        created======>setup()
+
+        beforeMount=======>onBeforeMount
+
+        mounted=========>onMounted
+
+        beforeUpdate========>onBeforeUpdate
+
+        updated=========>onUpdated
+
+        beforeUnmount========>onBeforeUnmount
+
+        unmounted=========>onUnmounted
+
+        

@@ -260,7 +260,107 @@
     shallowReadonly:让一个响应式数据变为只读(浅只读)
 
     应用场景:不希望数据被修改时
+
+3.toRaw 与 markRaw
+    toRaw:
+        作用:将一个由reactive生成的响应式对象转为普通对象
+        使用场景:用于读取响应式对象的普通对象,对这个普通对象的所有操作,不会引起页面刷新
+
+    markRaw:
+        作用:标记一个对象,使其永远不会再成为响应式对象
+        应用场景:
+            1.有些值不应被设置成响应式时,例如复杂的第三方类库等
+            2.当渲染具有不可变数据源的大列表时,跳过响应式转换可以提高性能
+
+4.customRef
+    作用:创建一个自定义的ref,并对其依赖项跟踪和更新触发进行显式控制
+
+    实现防抖效果
+    <template>
+        <input type="text" v-model="keyWord">
+        <h3>{{keyWord}}</h3>
+    </template>
+
+    <script>
+    import {customRef, ref} from 'vue'
+    export default {
+    name: 'App',
+    setup(){
+        // 自定义一个ref----myRef
+        function myRef(value){
+        let timer
+        return customRef((track,trigger)=>{
+            return {
+            get(){
+                console.log(`有人从myRef这个容器中读取数据了,我把${value}给他了`)
+                track() //通知Vue追踪value的变化(提前和get商量一下,让他认为这个value是有用的)
+                return value
+            },
+            set(val){
+                console.log(`有人把myRef这个容器中数据修改为:${val}`)
+                // keyWord.value = val
+                clearTimeout(timer)
+                timer = setTimeout(()=>{
+                value = val
+                trigger() //通知Vue去重新解析模板
+                },500)
+            }
+            }
+        })
+        }
+        // let keyWord = ref('hello') // 使用Vue提供的ref
+        let keyWord = myRef('hello') //使用自定义的ref
+        return {
+        keyWord
+        }
+    }
+    }
+    </script>
+
+
+5.provide与inject
+
+    作用:实现祖与后代组件间通信
+
+    套路:父组件有一个provide选项来提供数据,子组件有一个inject选项来开始使用这些数据
+
+    具体写法
+        1.祖组件
+            setup(){
+                let car = reactive({
+                    name:'宝马',
+                    price:'40'
+                })
+
+                provide('car',car) //给自己的后代组件传递数据
+            }
+
+        2.后代组件中:
+            let car = inject('car')
+            return {
+                car
+            }
+
+6.响应式数据的判断
+    isRef:检查一个值是否为一个ref对象
+    isReactive:检查一个对象是否是由reactive创建的响应式代理
+    isReadonly:检查一个对象是否由readonly创建的只读代理
+    isProxy:检查一个是否是由reactive或者readonly方法创建的代理
+
+
+
+五.新的组件
+
+    1.Fragment
+        在Vue2中:组件必须有一个根标签
+        在Vue3中:组件可以没有根标签,内部会将一多个标签包含在一个Faagement虚拟元素中
+        好处L减少标签层级m减少内存占用
+
+    2.
+            
     
+
+
 
 
 
